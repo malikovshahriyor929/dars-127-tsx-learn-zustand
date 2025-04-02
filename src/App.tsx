@@ -104,7 +104,7 @@ const App = () => {
                       delete
                     </Button>
                     <Button
-                      onClick={() => setOpener(value.id!)}
+                      onClick={() => setOpener(value.id!.toString())}
                       className="border !text-amber-500 !border-amber-500"
                     >
                       edit
