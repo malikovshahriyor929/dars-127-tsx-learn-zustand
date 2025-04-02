@@ -1,9 +1,9 @@
+import { useEffect, useState } from "react";
 import { Button, Empty, Form, Input } from "antd";
 import { newValueType, todoStore } from "./store/useTodoStore";
-import { useEffect, useState } from "react";
 
 const App = () => {
-  type counterType = {
+  interface counterType  {
     counter:number
   }
  const [opener, setOpener] = useState<string>("");
