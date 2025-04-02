@@ -13,7 +13,7 @@ const App = () => {
   const [formForEdit] = Form.useForm();
   const [searchForm] = Form.useForm();
  const { data, getData, deleteData, EditData, IsChecked } = todoStore();
- const finish = (e: newValueType) => {
+ const finish = (e: any) => {
     getData({ id: Date.now(), ...e, checked: false });
     form.resetFields();
   };

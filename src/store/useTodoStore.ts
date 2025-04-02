@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 export type newValueType = {
-  id?: string;
+  id: string;
   title: string;
   checked: boolean;
 };
