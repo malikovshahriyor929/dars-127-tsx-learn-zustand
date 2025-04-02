@@ -15,7 +15,7 @@ interface todoStoreType {
   IsChecked: (newValue: newValueType) => void;
 }
 
-export let todoStore = create(
+export const todoStore = create(
   persist<todoStoreType>(
     (set, get) => ({
       data: [],

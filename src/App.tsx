@@ -3,30 +3,33 @@ import { newValueType, todoStore } from "./store/useTodoStore";
 import { useEffect, useState } from "react";
 
 const App = () => {
-  let [opener, setOpener] = useState<string>("");
-  let [searched, setSearched] = useState<newValueType[]>([]);
-  let [progress, setProgress] = useState<any>({ counter: 0 });
+  type counterType = {
+    counter:number
+  }
+ const [opener, setOpener] = useState<string>("");
+ const [searched, setSearched] = useState<newValueType[]>([]);
+ const [progress, setProgress] = useState<counterType>({ counter: 0 });
   const [form] = Form.useForm();
   const [formForEdit] = Form.useForm();
   const [searchForm] = Form.useForm();
-  let { data, getData, deleteData, EditData, IsChecked } = todoStore();
-  let finish = (e: any) => {
+ const { data, getData, deleteData, EditData, IsChecked } = todoStore();
+ const finish = (e: newValueType) => {
     getData({ id: Date.now(), ...e, checked: false });
     form.resetFields();
   };
-  let editedData = (e: newValueType) => {
+ const editedData = (e: newValueType) => {
     EditData({ id: opener, title: e.title, checked: false });
     setOpener("");
     formForEdit.resetFields();
   };
-  let checkbox = (e: newValueType) => {
+ const checkbox = (e: newValueType) => {
     IsChecked(e);
   };
   useEffect(() => {
     const checkedCount = data.filter((value) => value.checked).length;
     setProgress({ counter: checkedCount });
   }, [data]);
-  let search = (e: any) => {
+ const search = (e: newValueType) => {
     const searchTerm = e.title.trim().toLowerCase();
     if (!searchTerm) {
       searchForm.resetFields()
@@ -119,7 +122,7 @@ const App = () => {
         <div className="bg-green-300 rounded-lg h-3 w-full">
           <div
             style={{
-              width: `${(progress.counter * 100) / data.length}%` || "0%",
+              width: `${(progress.counter * 100) / data.length}%`,
             }}
             className="h-3 duration-500 rounded-lg w-0 bg-blue-400"
           ></div>
