@@ -23,7 +23,7 @@ export const todoStore = create(
         set({ data: [...get().data, newValue] });
       },
       deleteData: (id) => {
-        const newValue = get().data.filter((value) => value.id !== id);
+        const newValue = get().data.filter((value) => value.id != id);
         set({ data: newValue });
       },
       EditData: (newValue) => {

@@ -14,7 +14,7 @@ const App = () => {
   const [searchForm] = Form.useForm();
  const { data, getData, deleteData, EditData, IsChecked } = todoStore();
  const finish = (e: any) => {
-    getData({ id: Date.now(), ...e, checked: false });
+    getData({ id: Date.now().toString(), ...e, checked: false });
     form.resetFields();
   };
  const editedData = (e: newValueType) => {
